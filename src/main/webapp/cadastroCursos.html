@@ -1,0 +1,111 @@
+
+<!doctype html>
+<html lang="pt-br" ng-app="cursosModulo">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="Marcio Torres, and Bootstrap contributors">
+<link rel="icon" href="imagens/Computer_icon-icons.com_55237.png">
+
+<title>Cadastro de Cursos</title>
+
+<link rel="canonical" href="carousel.css/">
+<script src="js/angular.js"></script>
+<!-- Bootstrap core CSS -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<script src="controller/cursos.js"></script>
+
+<!-- Custom styles for this template -->
+<link href="css/carousel.css" rel="stylesheet">
+<link href="css/estilo.css" rel="stylesheet">
+</head>
+<body ng-controller="cursosController">
+	<div ng-include src = "'menu.html'"></div>
+	<div align="center">
+		<h1 id="efeitoCss3">Lista e Cadastro de Cursos</h1>
+	</div>
+	<div class="container">
+		<form>
+			<div class="form-group row">
+				<label class="col-sm-1 col-form-label" for="codigoCurso"
+					style="text-align: right;">Código do curso:</label>
+				<div class="col-sm-11">
+					<input id="codigoCurso" type="text" ng-model="curso.codigoCurso"
+						required class="form-control" placeholder="Código do curso"
+						autocomplete="false"></input>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-1 col-form-label" for="nomeCurso"
+					style="text-align: right;">Nome do curso:</label>
+				<div class="col-sm-11">
+					<input type="text" ng-model="curso.nomeCurso" required
+						class="form-control" id="nomeCurso" placeholder="Nome do curso"></input>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-1" for="diasHorarios"
+					style="text-align: right;">Dias e horários:</label>
+				<div class="col-sm-11">
+					<input type="text" ng-model="curso.diasHorarios" required
+						class="form-control" id="diasHorarios"
+						placeholder="Dias e horários"></input>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-1" for="professor" style="text-align: right;">Professor:</label>
+				<div class="col-sm-11">
+					<select class="form-control" ng-model="curso.professor"
+						ng-options="professor.nome for professor in professores track by professor.codigo">
+
+					</select>
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<button type="submit" class="btn btn-outline-primary btn-lg"
+					ng-click="limparCampos()">Novo</button>
+				<button type="submit" class="btn btn-primary btn-lg"
+					ng-click="salvar(curso.codigoCurso,curso.nomeCurso,curso.diasHorarios,curso.professor)">Salvar</button>
+				<button type="submit" class="btn btn-danger btn-lg"
+					ng-click="excluir()">Excluir</button>
+			</div>
+			<div class="form-group">
+				<input type="text" class="form-control" ng-model="pesquisa"
+					id="pesquisa" placeholder="Digite um filtro de pesquisa"></input>
+			</div>
+		</form>
+	</div>
+	<div class="container">
+		<table class="table table-striped table-hover">
+			<tr>
+				<th scope="col">Código do curso</th>
+				<th scope="col">Nome do curso</th>
+				<th scope="col">Dias e horários</th>
+				<th scope="col">Professor</th>
+			</tr>
+			<tr ng-repeat="cursosTabela in cursos | filter:pesquisa"
+				ng-click="selecionaCurso(cursosTabela)">
+				<th>{{cursosTabela.codigoCurso}}</th>
+				<td>{{cursosTabela.nomeCurso}}</td>
+				<td>{{cursosTabela.diasHorarios}}</td>
+				<td>{{cursosTabela.professor.nome}}</td>
+			</tr>
+		</table>
+	</div>
+	<br>
+	<!-- FOOTER -->
+	<footer class="container">
+		<p class="float-right">
+			<a href="#">Back to top</a>
+		</p>
+		<p>
+			&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacy</a>
+			&middot; <a href="#">Terms</a>
+		</p>
+	</footer>
+	<script src="js/jquery-3.5.1.slim.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
