@@ -33,13 +33,8 @@ Todos os recursos nativos do java 12 e fornecidos junto com o eclipse  2021-03 n
                     </driver>
                 </drivers>
             </datasources>
-			
-
-
 
 <h3>Patch do driver mysql(anexar driver n local) <h3>
-
-
 
 <module name="com.mysql" xmlns="urn:jboss:module:1.5">
 
