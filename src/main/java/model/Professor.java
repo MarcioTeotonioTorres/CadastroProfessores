@@ -73,21 +73,21 @@ public class Professor implements Serializable {
 	@Column(name = "prof_telefone", length = 15, nullable = false)
 	private String telefone;
 	
-//	@OneToMany(mappedBy = "professor")
-//	private List<Curso> cursos;
-//	
-//	@XmlTransient
-//	public List<Curso> getCurso(){
-//		return cursos;
-//	}
+	@OneToMany(mappedBy = "professor")
+	private List<Curso> cursos;
 	
-//	public List<Curso> getCursos() {
-//		return cursos;
-//	}
-//
-//	public void setCursos(List<Curso> cursos) {
-//		this.cursos = cursos;
-//	}
+	@XmlTransient
+	public List<Curso> getCurso(){
+		return cursos;
+	}
+	
+	public List<Curso> getCursos() {
+		return cursos;
+	}
+
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
+	}
 
 	public String getNome() {
 		return nome;
